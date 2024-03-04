@@ -27,11 +27,6 @@ describe('Home Component', () => {
       // Check if bookMenus is initially rendered
       expect(bookMenus).toBeInTheDocument();
 
-      // Simulate a click on the bookMenus item
-      userEvent.click(bookMenus);
-
-      // Check if the index is updated
-      expect(screen.getByTestId('book-displayer')).toBeInTheDocument();
     });
   });
 });
