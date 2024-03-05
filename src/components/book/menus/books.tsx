@@ -93,7 +93,7 @@ export default function SwapiPlanets() {
                         className="p-6 rounded-t-lg flex items-center"
                         width={210}
                         height={210}
-                        src={book.volumeInfo.imageLinks.thumbnail}
+                        src={book.volumeInfo.imageLinks?.thumbnail}
                         alt="product image"
                       />
                     </a>
