@@ -13,7 +13,9 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get<Record<string, string>>(`https://www.googleapis.com/books/v1/volumes?q=react&Akey=AIzaSyBfWiQzHbNp2hIGBf151m2pKRDMR6lrhh8`)
+      .get<Record<string, string>>(
+        `https://www.googleapis.com/books/v1/volumes?q=react&Akey=AIzaSyAbOfWGZmCQnh6V9mX10lxenPR_MCo4sjc`
+      )
       .then(function (response) {
         var mappedDictionary: IDictionaryContent[] = Object.entries(response.data).map(
           ([key, value]) => {
@@ -64,13 +66,7 @@ export default function Home() {
           className="flex min-h-screen flex-col items-center bg-gray-800 justify-center"
         >
           <div className="flex flex-row animate-ping">
-            <Image
-              className="ml-5"
-              height={300}
-              width={300}
-              src="/XVo6.gif"
-              alt="My Image"
-            />
+            <Image className="ml-5" height={300} width={300} src="/XVo6.gif" alt="My Image" />
           </div>
         </main>
       )}

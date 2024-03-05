@@ -4,13 +4,11 @@ import { IDictionaryContent } from '../../../interfaces/main';
 import { BookItem } from '../../../interfaces/swapi';
 import { HeartIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
+import Image from 'next/image';
 
-export default function BookDetail(props: {
-  data: IDictionaryContent;
-}) {
+export default function BookDetail(props: { data: IDictionaryContent }) {
   const [modalInfos, setModalInfos] = useState<boolean>();
   const [bookDetail, setBookDetail] = useState<BookItem[]>();
-
 
   useEffect(() => {
     const { data } = props;
@@ -34,25 +32,24 @@ export default function BookDetail(props: {
             bookDetail.map((book, index) => {
               return (
                 <div key={index}>
-                  <img
+                  <Image
                     className="p-2 rounded-t-lg flex items-center w-full mr-4"
                     src={book.volumeInfo.imageLinks.thumbnail}
                     height={500}
                     width={500}
                     alt="product image"
-                    
                   />
 
                   <div className="max-w-md ">
-                      <a href="#">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                          {book.volumeInfo.title}
-                        </h5>
-                      </a>
+                    <a href="#">
+                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        {book.volumeInfo.title}
+                      </h5>
+                    </a>
                     <div className="p-8 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <span className="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">
-                         Publish By {book.volumeInfo.publisher}
-                        </span>
+                      <span className="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">
+                        Publish By {book.volumeInfo.publisher}
+                      </span>
                       <p className="mb-3 line-clamp-6 font-normal text-gray-700 dark:text-gray-400">
                         {book.volumeInfo.description}
                       </p>

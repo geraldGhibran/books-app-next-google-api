@@ -8,8 +8,6 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('Home Component', () => {
-
-
   it('changes index when bookMenus is clicked', async () => {
     const mockedData = {
       planets: 'https://book.dev/api/planets/'
@@ -26,7 +24,6 @@ describe('Home Component', () => {
 
       // Check if bookMenus is initially rendered
       expect(bookMenus).toBeInTheDocument();
-
     });
   });
 });

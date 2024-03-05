@@ -20,7 +20,7 @@ export default function Detail() {
       const menusHome = [
         {
           key: `Detail`,
-          value: `https://www.googleapis.com/books/v1/volumes?q=${detailId}&key=AIzaSyBfWiQzHbNp2hIGBf151m2pKRDMR6lrhh8`
+          value: `https://www.googleapis.com/books/v1/volumes?q=${detailId}&key=AIzaSyAbOfWGZmCQnh6V9mX10lxenPR_MCo4sjc`
         }
       ];
 

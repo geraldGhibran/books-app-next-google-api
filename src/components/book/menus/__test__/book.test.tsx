@@ -2,7 +2,6 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import Books from '../books';
 
-
 // Mock the fetch function
 global.fetch = require('jest-fetch-mock');
 
@@ -41,5 +40,4 @@ describe('Books component', () => {
     const bookElement = getByTestId('loading-state');
     expect(bookElement).toBeInTheDocument();
   });
-
 });

@@ -10,6 +10,4 @@ describe('Navbar component', () => {
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '/');
   });
-
-
 });

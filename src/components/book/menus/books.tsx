@@ -1,29 +1,17 @@
 import { useEffect, useState } from 'react';
 import { BookItem } from '../../../interfaces/swapi';
 import fetch from 'node-fetch';
+import Image from 'next/image';
 
 export default function SwapiPlanets() {
   const [books, setBooks] = useState<BookItem[]>();
   const [searchInput, setSearchInput] = useState('');
 
-  const fetchBooks = async (): Promise<BookItem[]> => {
-    let allBooks: BookItem[] = [];
-
-    const response = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&key=AIzaSyBfWiQzHbNp2hIGBf151m2pKRDMR6lrhh8`
-    );
-    const data = await response.json();
-
-    allBooks = data.items;
-
-    return allBooks;
-  };
-
   const fetchBooksReact = async (): Promise<BookItem[]> => {
     let allBooks: BookItem[] = [];
 
     const response = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyBfWiQzHbNp2hIGBf151m2pKRDMR6lrhh8`
+      `https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyAbOfWGZmCQnh6V9mX10lxenPR_MCo4sjc`
     );
     const data = await response.json();
 
@@ -33,6 +21,18 @@ export default function SwapiPlanets() {
   };
 
   useEffect(() => {
+    const fetchBooks = async (): Promise<BookItem[]> => {
+      let allBooks: BookItem[] = [];
+
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&key=AIzaSyAbOfWGZmCQnh6V9mX10lxenPR_MCo4sjc`
+      );
+      const data = await response.json();
+
+      allBooks = data.items;
+
+      return allBooks;
+    };
     if (!searchInput) {
       fetchBooksReact().then((books) => {
         setBooks(books);
@@ -87,11 +87,12 @@ export default function SwapiPlanets() {
                   <div
                     data-testid="loading-state"
                     className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-                    
                   >
                     <a href={`/detail/${book.volumeInfo.industryIdentifiers[0].identifier}`}>
-                      <img
+                      <Image
                         className="p-6 rounded-t-lg flex items-center"
+                        width={210}
+                        height={210}
                         src={book.volumeInfo.imageLinks.thumbnail}
                         alt="product image"
                       />

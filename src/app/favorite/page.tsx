@@ -42,13 +42,7 @@ export default function Favorite() {
       ) : (
         <main className="flex min-h-screen flex-col items-center bg-gray-800 justify-center">
           <div className="flex flex-row animate-ping">
-            <Image
-              className="ml-5"
-              height={300}
-              width={300}
-              src="/XVo6.gif"
-              alt="My Image"
-            />
+            <Image className="ml-5" height={300} width={300} src="/XVo6.gif" alt="My Image" />
           </div>
         </main>
       )}

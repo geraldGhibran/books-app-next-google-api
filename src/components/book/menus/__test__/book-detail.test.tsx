@@ -17,17 +17,17 @@ describe('BookDetail component', () => {
             publisher: 'Test Publisher',
             description: 'Test Description',
             imageLinks: {
-              thumbnail: 'test-image.jpg',
-            },
+              thumbnail: 'test-image.jpg'
+            }
           },
           saleInfo: {
             listPrice: {
-              amount: 10,
-            },
-          },
-        },
-      ],
-    },
+              amount: 10
+            }
+          }
+        }
+      ]
+    }
   };
 
   beforeEach(() => {
@@ -45,5 +45,4 @@ describe('BookDetail component', () => {
       expect(getByAltText('product image')).toBeInTheDocument();
     });
   });
-
 });

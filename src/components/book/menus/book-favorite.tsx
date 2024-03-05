@@ -75,21 +75,21 @@ export default function BookFavorite() {
                   return (
                     <tr className="hover:bg-gray-50" key={index}>
                       <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-600">
-                        {book.volumeInfo.title}
+                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-600">
+                          {book.volumeInfo.title}
                         </span>
                       </th>
                       <td className="px-4 py-4 text-xs">
                         {ConvertDateFormat(book.volumeInfo.publishedDate)}
                       </td>
                       <td className="px-4 py-2">
-                          <Image
-                            className="ml-5"
-                            height={40}
-                            width={40}
-                            src={book.volumeInfo.imageLinks.thumbnail}
-                            alt="My Image"
-                          />
+                        <Image
+                          className="ml-5"
+                          height={40}
+                          width={40}
+                          src={book.volumeInfo.imageLinks.thumbnail}
+                          alt="My Image"
+                        />
                       </td>
                     </tr>
                   );

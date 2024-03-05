@@ -1,6 +1,5 @@
 import { BookItem } from '../../interfaces/swapi';
 
-
 export const calculateTotalPages = (totalItems: number, itemsPerPage: number): number => {
   return Math.ceil(totalItems / itemsPerPage);
 };
@@ -23,14 +22,12 @@ export function ConvertDateFormat(inputDate: Date | string): string {
   return formattedDate;
 }
 
-
-export const rupiah = (number: number)=>{
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR"
+export const rupiah = (number: number) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR'
   }).format(number);
-}
-
+};
 
 export function AddToWishlistData(newItem: BookItem): void {
   // Retrieve existing data from local storage
@@ -47,16 +44,11 @@ export function AddToWishlistData(newItem: BookItem): void {
 }
 
 // Function to paginate data
-export const paginateData = (
-  data: BookItem[],
-  page: number,
-  pageSize: number
-): BookItem[] => {
+export const paginateData = (data: BookItem[], page: number, pageSize: number): BookItem[] => {
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   return data.slice(startIndex, endIndex);
 };
-
 
 export function ModalPlanet(props: { infos: boolean; fSetterInfos: (param: undefined) => void }) {
   const { fSetterInfos } = props;
