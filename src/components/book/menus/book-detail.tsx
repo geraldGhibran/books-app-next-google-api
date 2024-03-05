@@ -27,20 +27,23 @@ export default function BookDetail(props: { data: IDictionaryContent }) {
     <>
       {modalInfos && <ModalPlanet fSetterInfos={setModalInfos} infos={modalInfos} />}
       <>
-        <div className="p-6 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5">
+        <div>
           {bookDetail &&
             bookDetail.map((book, index) => {
               return (
-                <div key={index}>
+                <div
+                  className="p-6 grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-5"
+                  key={index}
+                >
                   <Image
-                    className="p-2 rounded-t-lg flex items-center w-full mr-4"
+                    className="p-2 rounded-t-lg flex items-center w-full mr-4 mb-10"
                     src={book.volumeInfo.imageLinks.thumbnail}
                     height={500}
                     width={500}
                     alt="product image"
                   />
 
-                  <div className="max-w-md ">
+                  <div className="max-w-md lg:pt-[100px] md:pt-[100px]">
                     <a href="#">
                       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {book.volumeInfo.title}
