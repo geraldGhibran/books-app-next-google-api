@@ -1,9 +1,3 @@
-interface ISwapiData {
-  count: number;
-  next: string | undefined;
-  previous: string | undefined;
-}
-
 export interface Book {
   kind: string;
   totalItems: number;
@@ -16,6 +10,7 @@ export interface BookItem {
   etag: string;
   selfLink: string;
   volumeInfo: {
+    averageRating: number;
     title: string;
     subtitle?: string;
     authors: string[];
@@ -93,51 +88,4 @@ export interface BookItem {
   searchInfo: {
     textSnippet: string;
   };
-}
-
-//People
-export interface ISwapiPeople extends ISwapiData {
-  results: Array<ISwapiCharacter>;
-}
-
-export interface ISwapiCharacter {
-  name: string;
-  height: string;
-  mass: string;
-  gender: string;
-  url: string;
-}
-
-export interface ISwapiUser {
-  name: string;
-  height: string;
-  birth_year: string;
-  gender: string;
-}
-//Planets
-export interface ISwapiPlanets extends ISwapiData {
-  results: Array<ISwapiPlanet>;
-}
-export interface ISwapiPlanetDetail {
-  id: string | undefined;
-  name: string;
-  climate: string;
-  gravity: string;
-  terrain: string;
-  population: string;
-  url: string;
-  created: Date;
-}
-
-export interface ISwapiPlanetWishlist extends ISwapiData {
-  result: Array<ISwapiPlanet> | null;
-}
-export interface ISwapiPlanet {
-  name: string;
-  climate: string;
-  gravity: string;
-  terrain: string;
-  population: string;
-  url: string;
-  created: Date;
 }

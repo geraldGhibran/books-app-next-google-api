@@ -1,0 +1,30 @@
+/* eslint-disable @next/next/no-img-element */
+import { getServerSession } from "next-auth";
+import { authOptions } from '@/app/api/auth/[...nextauth]/options';
+import Link from 'next/link';
+
+export default async function Navbar() {
+  const session = await getServerSession(authOptions);
+
+  console.log('session', session);
+
+  return (
+    <>
+      <header className="bg-gray-600 text-gray-100">
+        <nav className="flex justify-between items-center w-full px-10 py-4">
+          <div> <Link href="/">Books Next</Link></div>
+          <div className="flex gap-10">
+            <Link href="/">Home</Link>
+           
+            <Link href="/favorite">Favorite</Link>
+            {session ? (
+              <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
+            ) : (
+              <Link href="/api/auth/signin">Login</Link>
+            )}
+          </div>
+        </nav>
+      </header>
+    </>
+  );
+}

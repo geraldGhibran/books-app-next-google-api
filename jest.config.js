@@ -14,7 +14,8 @@ module.exports = {
     '!<rootDir>/src/*',
     '!<rootDir>/cypress/**',
     '!<rootDir>/src/interfaces/**',
-    '!<rootDir>/src/app/layout.**'
+    '!<rootDir>/src/app/layout.**',
+    '!<rootDir>/src/app/api/auth/[...nextauth]/**',
   ],
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/', '<rootDir>/cypress/'],
   setupFilesAfterEnv: ['<rootDir>/setupTest.ts'],

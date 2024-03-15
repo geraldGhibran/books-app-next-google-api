@@ -7,14 +7,14 @@ import { IDictionaryContent } from '../../interfaces/main';
 import Image from 'next/image';
 
 export default function Favorite() {
-  const [menusHome, setMenusHome] = useState<IDictionaryContent[] | undefined>();
+  const [menusHome, setMenusHome] = useState<IDictionaryContent[] | undefined>(undefined);
 
   useEffect(() => {
     const fetchMenus = () => {
       const menusHome = [
         {
           key: 'Favorites',
-          value: ''
+          value: `${process.env.BASE_URL}mylibrary/bookshelves/0/volumes?key=${process.env.KEY_SECOND}`
         }
       ];
 
@@ -36,8 +36,8 @@ export default function Favorite() {
             <div className="blur-[106px] h-80 bg-gradient-to-br from-blue-400 to-purple-400 dark:from-blue-700"></div>
             <div className="blur-[106px] h-64 bg-gradient-to-r from-purple-400 to-cyan-300 dark:to-indigo-600"></div>
           </div>
-          <BookMenus menus={menusHome} indexChanger={null} selectedIndex={0} />
-          <BookDisplayer menu={menusHome[0]} detailPage={true} />
+          <BookMenus menus={menusHome} />
+          <BookDisplayer menu={menusHome[0]} />
         </main>
       ) : (
         <main className="flex min-h-screen flex-col items-center bg-gray-800 justify-center">

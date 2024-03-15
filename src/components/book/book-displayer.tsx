@@ -6,16 +6,16 @@ import BookPlanetDetail from './menus/book-detail';
 import BookPlanetFavorite from './menus/book-favorite';
 import { IDictionaryContent } from '../../interfaces/main';
 
-export default function BookDisplayer(props: { menu: IDictionaryContent; detailPage: boolean }) {
-  const { menu, detailPage } = props;
+export default function BookDisplayer(props: { menu: IDictionaryContent }) {
+  const { menu } = props;
 
   switch (menu.key) {
     case 'Detail':
-      return <BookPlanetDetail data={menu} detailPage={detailPage} />;
+      return <BookPlanetDetail data={menu} />;
     case 'Books':
       return <BookPlanets />;
     case 'Favorites':
-      return <BookPlanetFavorite />;
+      return <BookPlanetFavorite data={menu} />;
     default:
       return <BookNotImplementedMenu />;
   }

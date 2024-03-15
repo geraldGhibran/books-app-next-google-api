@@ -21,7 +21,6 @@
     "baseUrl": "src",
     "allowSyntheticDefaultImports": true,
     "types": [
-      "cypress",
       "node",
       "jest",
       "@testing-library/jest-dom"
@@ -38,6 +37,12 @@
       ],
       "@/components/*": [
         "components/*"
+      ],
+      "@/interfaces/*": [
+        "interfaces/*"
+      ],
+      "@/app/*": [
+        "app/*"
       ]
     },
     "plugins": [
@@ -48,12 +53,11 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "./src/**/**.*",
+    "/src/**/**.*",
     "jest.config.js",
-    ".next/types/**/*.ts"
-  ],
+    ".next/types/**/*.ts",
+    "**/*.tsx"
+, "src/services/index.ts"  ],
   "exclude": [
     "node_modules",
     ".next",

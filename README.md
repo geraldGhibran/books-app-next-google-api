@@ -17,11 +17,20 @@ aSer the user refreshes the page.
 7. Responsive Design: Ensure the applica2on is fully responsive and works well on both  [DONE]
 desktop and mobile devices.
 8. Error Handling: Implement proper error handling for cases like failed API requests or 
-invalid search queries. [TBD]
+invalid search queries. [DONE]
 9. Loading States: Display loading indicators or placeholders while fetching data from the  [DONE]
 API.
-10. Unit Tes1ng: Write unit tests for cri2cal components and func2onali2es using a tes2ng [DONE]
+10. Unit Tes1ng: Write unit tests for cri2cal components and func2onali2es using a tes2ng [TBD]
 library like Jest or React Tes2ng Library.
+
+Bonus (Op2onal):
+• Pagina1on: Implement pagina2on for the book lis2ng page to improve performance [DONE]
+when dealing with a large number of search results.
+• Sor1ng & Filtering: Allow users to sort and filter search results based on different  [DONE]
+criteria such as relevance, publica2on date, or ra2ng.
+• Authen1ca1on: Implement user authen2ca2on and allow users to sign in/sign up to  [DONE]
+save their favourite books across sessions.
+• Localiza1on: Support mul2ple languages for the interface. [TBD]
 
  ### Unit Tests
  ![Unit test](./assets/unit-test.PNG)

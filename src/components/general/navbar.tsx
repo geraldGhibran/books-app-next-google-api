@@ -1,18 +1,40 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import { Bars3Icon, XMarkIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { INavigationItem } from '../../interfaces/main';
 import { Disclosure } from '@headlessui/react';
-
-const navigation: INavigationItem[] = [
-  { name: 'Home', href: '/', current: true, extraData: undefined, active: true }
-];
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function Navbar() {
+  const { status } = useSession();
+
+  let FavoritePage: INavigationItem = {
+    name: '',
+    href: '/',
+    current: false,
+    extraData: undefined,
+    active: false
+  };
+
+  if (status === 'authenticated') {
+    FavoritePage = {
+      name: 'Favorite',
+      href: '/favorite',
+      current: false,
+      extraData: undefined,
+      active: false
+    };
+  }
+  const navigation: INavigationItem[] = [
+    { name: 'Books', href: '/', current: false, extraData: undefined, active: false },
+    FavoritePage
+  ];
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -37,7 +59,7 @@ export default function Navbar() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -49,18 +71,21 @@ export default function Navbar() {
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <a href={'/favorite'}>
-                  <span className="mx-2"> Favorite </span>
-                </a>
-                <a href={'/favorite'}>
-                  <HeartIcon className="block h-6 w-6" aria-hidden="true" />
-                </a>
+                {status == 'authenticated' ? (
+                  <Link className="text-red-600 font-bold" href="/api/auth/signout?callbackUrl=/">
+                    Logout
+                  </Link>
+                ) : (
+                  <Link className="text-blue-600 font-bold" href="/api/auth/signin">
+                    Login
+                  </Link>
+                )}
               </div>
             </div>
           </div>
@@ -70,7 +95,7 @@ export default function Navbar() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as="a"
+                  as={Link}
                   href={item.href}
                   className={classNames(
                     item.current

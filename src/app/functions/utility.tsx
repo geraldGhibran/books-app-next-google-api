@@ -1,4 +1,4 @@
-import { BookItem } from '../../interfaces/swapi';
+import { BookItem } from '../../interfaces/book';
 
 export const calculateTotalPages = (totalItems: number, itemsPerPage: number): number => {
   return Math.ceil(totalItems / itemsPerPage);
@@ -50,8 +50,13 @@ export const paginateData = (data: BookItem[], page: number, pageSize: number): 
   return data.slice(startIndex, endIndex);
 };
 
-export function ModalPlanet(props: { infos: boolean; fSetterInfos: (param: undefined) => void }) {
-  const { fSetterInfos } = props;
+export function ModalPlanet(props: {
+  infos: boolean | string;
+  fSetterInfos: (param: undefined) => void;
+  submitForm: (param: string | undefined) => void;
+  remove: boolean;
+}) {
+  const { fSetterInfos, submitForm, infos, remove } = props;
 
   return (
     <div
@@ -86,11 +91,31 @@ export function ModalPlanet(props: { infos: boolean; fSetterInfos: (param: undef
           </div>
           <div className="p-6 space-y-6">
             <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              <span className="inline-flex items-center gap-1 rounded-fullbg-green-100 px-2 py-1 text-lg font-semibold text-green-600">
+              <span className="inline-flex items-center gap-1 rounded-fullbg-green-100 px-2 py-1 text-lg font-semibold text-white">
                 {' '}
-                Added to Favorite
+                {infos}
               </span>
             </p>
+          </div>
+          <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+            <button
+              onClick={() => submitForm(undefined)}
+              type="button"
+              className={`text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ${
+                remove
+                  ? 'dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 bg-red-700 hover:bg-red-800'
+                  : 'dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 bg-green-700 hover:bg-green-800'
+              }`}
+            >
+              Proceed
+            </button>
+            <button
+              onClick={() => fSetterInfos(undefined)}
+              type="button"
+              className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Decline
+            </button>
           </div>
         </div>
       </div>

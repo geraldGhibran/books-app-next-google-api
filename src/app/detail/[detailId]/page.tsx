@@ -1,11 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import Navbar from '../../../components/general/navbar';
 import MenuDisplayer from '../../../components/book/book-displayer';
 import BookMenus from '../../../components/book/book-menu';
 import { IDictionaryContent } from '../../../interfaces/main';
 import Image from 'next/image';
+import Navbar from '@/components/general/navbar';
 
 /**
  * Renders a detailed information about a specific item.
@@ -20,7 +20,7 @@ export default function Detail() {
       const menusHome = [
         {
           key: `Detail`,
-          value: `https://www.googleapis.com/books/v1/volumes?q=${detailId}&key=AIzaSyAbOfWGZmCQnh6V9mX10lxenPR_MCo4sjc`
+          value: `${process.env.BASE_URL}volumes?q=${detailId}&key=${process.env.KEY_SECOND}`
         }
       ];
 
@@ -42,8 +42,8 @@ export default function Detail() {
             <div className="blur-[106px] h-64 bg-gradient-to-r from-purple-400 to-cyan-300 dark:to-indigo-600"></div>
           </div>
           {/* Display menus and details */}
-          <BookMenus menus={menusHome} indexChanger={null} selectedIndex={0} />
-          <MenuDisplayer menu={menusHome[0]} detailPage={true} />
+          <BookMenus menus={menusHome} />
+          <MenuDisplayer menu={menusHome[0]} />
         </main>
       ) : (
         // Loading state
